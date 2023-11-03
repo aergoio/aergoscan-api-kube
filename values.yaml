@@ -1,0 +1,28 @@
+namespace: local
+deployment:
+  type: blue
+  image:
+    repository: aergoscan/api
+    tag: "2.4.0"
+  containers:
+    default:
+      ports:
+        http: 3000
+      readinessProbe:
+        initialDelaySeconds: 10
+        periodSeconds: 5
+      livenessProbe:
+        initialDelaySeconds: 10
+        periodSeconds: 5
+
+service:
+  type: ClusterIP
+  port:
+    http: 80
+
+env:
+  ARG_HOST_API: http://api2-local.aergoscan.io
+  ARG_SELECTED_NETWORK: local
+  ARG_ES_DNS: aergoscan-es
+  ARG_ES_PORT: "9200"
+  ARG_HTTP_PORT: 3000
