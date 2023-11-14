@@ -30,13 +30,13 @@ spec:
               containerPort: {{ .Values.deployment.containers.default.ports.http }}
           env:
             - name: HOST_API
-              value: {{ .Values.env.ARG_HOST_API }}
+              value: {{ .Values.env.HOST_API }}
             - name: SELECTED_NETWORK
-              value: {{ .Values.env.ARG_SELECTED_NETWORK }}
+              value: {{ .Values.env.SELECTED_NETWORK }}
             - name: ES_URL
-              value: {{ .Values.env.ARG_ES_DNS }}-{{ .Values.deployment.type }}:{{ .Values.env.ARG_ES_PORT }}
+              value: {{ .Values.env.ES_DNS }}-{{ .Values.deployment.type }}:{{ .Values.env.ES_PORT }}
             - name: HTTP_PORT
-              value: "{{ .Values.env.ARG_HTTP_PORT }}"
+              value: "{{ .Values.env.HTTP_PORT }}"
           readinessProbe:
             httpGet:
               path: /
